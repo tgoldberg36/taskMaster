@@ -9,16 +9,77 @@
 <script src="taskMaster.js" type="text/javascript"></script>
 
 <body class="w3-black">
-  <h1>90's Task Master</h1>
+  <div class = 'titleBox'>
+  <h1 data-text="90's Task Master">90's Task Master</h1>
+  </div>
+  <div class = "outerDiv">
   <div class = "mainDiv">
     <div class="inputDiv" id = "inputDiv">
       <input type="text" id="addTxt" />
       <input type="button" id="addBtn" value="Add Task"/>
       <input type="button" id="clearBtn" value="Clear">
+          <div id="taskList"></div>
     </div>
+  </div>
+  <div class = "calanderDiv" id = "calanderDiv">
+    	<div class="monthDiv">      
+      		<br> Month <br>
+		</div>
 
-    <div id="taskList"></div>
+		<ul class="weekdays">
+	  	<li>Mo</li>
+	  	<li>Tu</li>
+		  <li>We</li>
+		  <li>Th</li>
+		  <li>Fr</li>
+		  <li>Sa</li>
+		  <li>Su</li>
+		</ul>
 
+		<ul class="days">  
+		  <li>1</li>
+		  <li>2</li>
+		  <li>3</li>
+		  <li>4</li>
+		  <li>5</li>
+		  <li>6</li>
+		  <li>7</li>
+		  <li>8</li>
+		  <li>9</li>
+		  <li>10</li>
+		  <li>11</li>
+		  <li>12</li>
+		  <li>13</li>
+		  <li>14</li>
+		  <li>15</li>
+		  <li>16</li>
+		  <li>17</li>
+		  <li>18</li>
+		  <li>19</li>
+		  <li>20</li>
+		  <li>21</li>
+		  <li>22</li>
+		  <li>23</li>
+		  <li>24</li>
+		  <li>25</li>
+		  <li>26</li>
+		  <li>27</li>
+		  <li>28</li>
+		  <li>29</li>
+		  <li>30</li>
+		  <li>31</li>
+				</ul>
+	</div>
+  </div>
+
+  	<div class ="audioBlock">
+  	<audio controls>
+  		<source src="macintosh.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
   </div>
 </body>
 </html>
+
+
+
