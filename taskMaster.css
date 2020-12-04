@@ -152,3 +152,12 @@ h1::after {
 	display: inline-block;
 	margin-bottom: 5px;
 }
+
+.weatherDiv {
+	background-color: navy;
+	width: 600px;
+}
+
+.weatherTitle{
+	text-align: center;
+}
