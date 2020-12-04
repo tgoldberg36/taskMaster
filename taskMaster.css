@@ -1,13 +1,72 @@
-body, h1,h2,h3,h4,h5,h6 {
-	font-family: "Montserrat", sans-serif
+body, h1,h2,h3,h4,h5,h6 {	
+	font-family: courier, monospace;
+	animation-name: bgcolor;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 h1{
 	text-align: center;
 }
 
+@keyframes bgcolor {
+	0% {
+		background-color: #9effb8
+	}
+	30% {
+        background-color: #89aee1
+    }
+
+    60% {
+        background-color: #d46ce7
+    }
+
+    90% {
+        background-color: #e9f259
+    }
+
+    100% {
+        background-color: #864cbf
+    }
+}
+
 .mainDiv {
+	animation-name: bgcolor;
+    animation-duration: 15s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
 	display: block;
+	padding-left: 100px;
+	min-height: 700px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.inputDiv {
+	display: inline-block;
+	align-content: center;
+	padding: 25px;
+}
+
+.taskDiv {
+	word-wrap: break-word;
+	text-indent: 100px;
+	color: black;
+	background-color: #FCFFDB;
+	padding: 0;
+	width: 600px;
+	height: auto;
+	border: 1px solid grey;
+
+}
+
+.timeFormat {
+	font-style: italic;
+	padding-left: 50px;
+}
+
+.taskItem {
+	font-family: courier, monospace;
+	min-width: 600px;
 }

@@ -26,7 +26,7 @@ var makeModel = function() {
   return {
     addTask: function(task){
       if(task.length > 0) {
-        _taskList.unshift({"task":task, "complete": false});
+        _taskList.unshift({"task":task, "time": getTime(), "complete": false});
         _observers.notify();
       }else{
         alert("Please input a task before selecting Add Task button");
@@ -69,8 +69,14 @@ var taskView = function(model, listId) {
     var newDiv = document.createElement('div');
     var newSpan = document.createElement('span');
     newSpan.append(document.createTextNode(task.task));
+    newDiv.setAttribute("class","taskDiv");
+    newSpan.setAttribute("class","taskItem");
+    var time = task.time;
+    var timeNode = document.createElement("span");
+    timeNode.setAttribute("class","timeFormat");
+    timeNode.append(time);
+    newSpan.append(timeNode);
     newDiv.append(newSpan);
-
     _list.append(newDiv);
   }
 
@@ -105,6 +111,11 @@ var makeController = function(model) {
   };
 }
 
+var getTime = function(){
+    var d = new Date(); 
+    d = d.toString().slice(0,21);
+    return d;
+}
 
 document.addEventListener("DOMContentLoaded", function(event){
   var model = makeModel();
