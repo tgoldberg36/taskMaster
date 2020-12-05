@@ -35,19 +35,20 @@ body,h2,h3,h4,h5,h6 {
 
 .outerDiv {
 	padding: 50px;
-	display: inline-flex;
+	padding-top: 10px;
+	display: flex;
+	justify-content: center;
 }
 
 .mainDiv {
+	width: 600px;
 	animation-name: bgcolor;
     animation-duration: 25s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
 	display: block;
-	padding-left: 100px;
 	min-height: 700px;
-	margin-left: auto;
-	margin-right: auto;
+	
 }
 
 .inputDiv {
@@ -58,13 +59,14 @@ body,h2,h3,h4,h5,h6 {
 
 .taskDiv {
 	word-wrap: break-word;
-	text-indent: 100px;
+	text-indent: 50px;
 	color: black;
 	background-color: #FCFFDB;
 	padding: 0;
-	width: 600px;
+	width: 550px;
 	height: auto;
 	border: 1px solid grey;
+	margin-right: 0px;
 
 }
 
@@ -156,8 +158,30 @@ h1::after {
 .weatherDiv {
 	background-color: navy;
 	width: 600px;
+	margin-left: 30px;
 }
 
 .weatherTitle{
 	text-align: center;
+}
+
+.audioBlock{
+	display: flex;
+	justify-content: center;
+}
+
+.crossOut {
+	text-decoration: line-through;
+}
+
+.red{
+	font-color: red;
+}
+
+.blue{
+	font-color: blue;
+}
+
+.black{
+	font-color: black;
 }

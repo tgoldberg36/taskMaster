@@ -2,7 +2,8 @@
 var taskMaster = {
   signal: {
     add: 'ADD',
-    clear: 'CLEAR'
+    clear: 'CLEAR',
+    doneTask: 'DONETASK'
   }
 }
 
@@ -22,6 +23,7 @@ var makeSignaller = function() {
 
 var makeModel = function() {
   var _taskList = [];
+  var _fontColor = "black";
   var _observers = makeSignaller();
 
   return {
@@ -33,6 +35,25 @@ var makeModel = function() {
         alert("Please input a task before selecting Add Task button");
       }
     },
+
+    clearTasks: function(){
+      _taskList = [];
+      _observers.notify();
+    },
+
+    doneTask: function(task){
+      console.log(task);
+      var index = _taskList.indexOf(task);
+      console.log(index);
+      if(_taskList[index].complete == true){
+        _taskList[index].complete = false;
+      }else{
+        _taskList[index].complete = true;
+      }
+      _observers.notify();
+
+    },
+
     getTasks : function() { return _taskList;},
     register: function(fxn) { _observers.add(fxn);}
   };
@@ -57,7 +78,21 @@ var addControlBtn = function(model, txtId, btnId) {
 
     register: function(fxn) { _observers.add(fxn); }
   };
+}
 
+var clearControlBtn = function(btnId) {
+  var _btn = document.getElementById(btnId);
+  var _observers = makeSignaller();
+
+  _btn.addEventListener('click',function() {
+    _observers.notify({
+      type: taskMaster.signal.clear
+    });
+  });
+
+  return {
+    register: function(fxn) { _observers.add(fxn);}
+  }
 }
 
 
@@ -66,11 +101,17 @@ var taskView = function(model, listId) {
   var _observers = makeSignaller();
 
   var _addTasks = function(task,num) {
-    console.log(task);
+    //console.log(task);
     var newDiv = document.createElement('div');
     var newSpan = document.createElement('span');
     newSpan.append(document.createTextNode(task.task));
-    newDiv.setAttribute("class","taskDiv");
+
+    if(task.complete == false){
+      newDiv.setAttribute("class","taskDiv");
+    }else{
+      newDiv.setAttribute("class","taskDiv crossOut");
+    }
+    
     newSpan.setAttribute("class","taskItem");
     var time = task.time;
     var timeNode = document.createElement("span");
@@ -79,6 +120,13 @@ var taskView = function(model, listId) {
     newSpan.append(timeNode);
     newDiv.append(newSpan);
     _list.append(newDiv);
+
+    newDiv.addEventListener('click',function() {
+      _observers.notify({
+        type: taskMaster.signal.doneTask,
+        value: task
+      });
+    });
   }
 
   return {
@@ -105,6 +153,12 @@ var makeController = function(model) {
         case taskMaster.signal.add:
           model.addTask(event.value);
           break;
+        case taskMaster.signal.clear:
+          model.clearTasks();
+          break;
+        case taskMaster.signal.doneTask:
+          model.doneTask(event.value);
+          break;
         default:
           console.log('Unknown Event Type: ', event);
       }
@@ -122,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function(event){
   var model = makeModel();
   var view = taskView(model, 'taskList');
   var addControl = addControlBtn(model,'addTxt','addBtn');
+  var clearBtn = clearControlBtn('clearBtn');
   var controller = makeController(model);
 
   model.register(view.render);
@@ -129,4 +184,5 @@ document.addEventListener("DOMContentLoaded", function(event){
 
   view.register(controller.dispatch);
   addControl.register(controller.dispatch);
+  clearBtn.register(controller.dispatch);
 });
