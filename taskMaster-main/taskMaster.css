@@ -1,0 +1,311 @@
+
+body {	
+	cursor: url(helios.png), auto;
+  	color: #FFF; 
+  	font-family: tvFont, sans-serif; 
+  	font-weight: 700;
+  	background-image: url('vapeNation.gif');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+@keyframes bgcolor {
+	0% {
+		background-color: #9effb8
+	}
+	30% {
+        background-color: #89aee1
+    }
+
+    60% {
+        background-color: #79f259
+    }
+
+    90% {
+        background-color: #7cf4d3
+    }
+
+    100% {
+        background-color: #864cbf
+    }
+}
+
+.outerDiv {
+	cursor: url(helios.png), auto;
+	font-family: tvFont, sans-serif;
+	padding: 50px;
+	padding-top: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.mainDiv {
+	border: 10px;
+	border-style: ridge;
+	border-color: lightgrey;
+	width: 600px;
+	background-color: #008080;
+	background-size: cover;
+	min-height: 700px;
+	
+}
+
+.inputDiv {
+	cursor: auto;
+	display: inline-block;
+	align-content: center;
+	padding: 20px;
+}
+
+.taskDiv {
+	word-wrap: break-word;
+	text-indent: 50px;
+	color: black;
+	background-color: #FCFFDB;
+	padding: 0;
+	width: 550px;
+	height: auto;
+	border: 1px solid grey;
+	margin-right: 0px;
+
+}
+
+.timeFormat {
+	font-style: italic;
+	padding-left: 50px;
+}
+
+.taskItem {
+	font-family: courier, monospace;
+	min-width: 600px;
+}
+
+
+/* 	Open Source code used to help create title
+	Had to be tweaked to center the text properly
+	https://codepen.io/vlasterx/pen/zdNZZg			 */ 
+.titleBox {
+	width: 100%;
+ 	height: 200px;
+ 	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+
+h1 {
+	  font-family: tvFont, sans-serif;
+	  display: block;
+	  position: relative;
+	  font-size: 90px;
+	  background: -webkit-gradient(linear, left top, left bottom, from(#00f2ff), color-stop(50%, #e2fbff), color-stop(51%, #0a343f), to(#0094f7));
+	  background: linear-gradient(to bottom, #00f2ff 0%, #e2fbff 50%, #0a343f 51%, #0094f7 100%);
+	  background-blend-mode: multiply;
+	  background-size: 10px 100px;
+	  background-repeat: repeat;
+	  line-height: 1;
+	  -webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
+}
+h1::before {
+	  background: none;
+	  content: attr(data-text);
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  z-index: +2;
+	  background-image: url("https://i.imgur.com/Ym9HCsT.gif");
+	  background-blend-mode: screen;
+	  -webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
+	  opacity: 0.5;
+}
+h1::after {
+	  background: none;
+	  content: attr(data-text);
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  text-shadow: 1px -1px 0 rgba(255, 255, 255, 0.5), 3px 1px 3px rgba(255, 0, 255, 0.85), -3px -2px 3px rgba(0, 0, 255, 0.85), 1px -2px 0 rgba(255, 255, 255, 0.8);
+	  z-index: -2;
+}
+
+.weatherDiv {
+	position: relative;
+	padding: 30px 10px;
+	border: 10px;
+	border-style: ridge;
+	border-color: lightgrey;
+	font-family: tvFont, sans-serif;
+	background-image: url("weatherBack.png");
+	background-size: cover;
+	width: 650px;
+	margin-left: 30px;
+}
+
+.weatherDiv:before {
+	word-spacing: 25px;
+    width: min-content;
+    display: table-caption;
+	border: 2px;
+	border-radius: 3px;
+	padding: 5px;
+	border-style: solid;
+	border-color: white;
+	background-color: blue;
+  	content: attr(icon);
+}
+
+
+h2 {
+	font-family: tvFont, sans-serif;
+}
+
+.weatherHeading{
+	text-align: center;
+}
+
+.weatherContainer{
+	padding: 10px;
+	text-align: center;
+}
+
+.crossOut {
+	text-decoration: line-through;
+}
+
+.red{
+	color: red;
+	font-family: courier, monospace;
+	min-width: 600px;
+}
+
+.blue{
+	color: blue;
+	font-family: courier, monospace;
+	min-width: 600px;
+}
+
+.black{
+	color: black;
+	font-family: courier, monospace;
+	min-width: 600px;
+}
+
+.radioLabels{
+	color: black;
+}
+
+.radioDiv {
+	border-style: ridge;
+	border-color: lightgrey;
+	border-size: 5px;
+	background-color: white;
+	padding-left: 10px;
+	margin: 5;
+	width: 225px;
+}
+
+.standardBlack {
+	color: black;
+}
+
+.icon{
+	content: '';
+    background:url("trash.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position:absolute;
+    width:22px;
+    height:22px;
+    margin-top: 3px;
+    margin-left: -22px;
+}
+
+.iconAllow {
+	width: 180px;
+}
+
+@font-face {
+  	font-family: tvFont;
+  	src: url("tvfont-webfont.woff");
+  	src: url("tvfont-webfont.woff2");
+}
+
+.weatherAjax {
+  	margin: 50px 0 20px;
+  	padding-left: 33%;
+}
+ 
+.weatherAjax .cities {
+  	display: grid;
+  	grid-gap: 32px 20px;
+  	grid-template-columns: repeat(4, 1fr);
+}
+
+.weatherAjax .city {
+ 	position: relative;
+  	padding: 40px 10%;
+  	border-radius: 20px;
+  	background: var(--text_light);
+  	color: var(--text_med);
+}
+
+.weatherAjax .city::after{
+	content: ’’;
+	width: 90%;
+	height: 50px;
+	position: absolute;
+	bottom: -12px;
+	left: 5%;
+	z-index: -1;
+	opacity: 0.3;
+	border-radius: 20px;
+	background: var(--text_light);
+}
+
+.weatherAjax .city-temp {
+	font-size: 5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+.city-name .city-temp{
+	position: absolute;
+	text-align: center;
+	padding-left: 150px;
+}
+
+.xBtn{
+	margin-left: 20px;
+}
+
+.spin{
+	border-width: 10px;
+	border-style: ridge;
+	border-color: pink;
+	width: 100px;
+	height: 100px;
+	animation-name: spin;
+  	animation-duration: 5000ms;
+  	animation-iteration-count: infinite;
+  	animation-timing-function: linear; 
+	background-image: url('heliosHead.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -1;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.audioBlock{
+	display: flex;
+	justify-content: center;
+}
