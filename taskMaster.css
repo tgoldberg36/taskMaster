@@ -58,7 +58,7 @@ body {
 .inputDiv {
 	display: inline-block;
 	align-content: center;
-	padding: 25px;
+	padding: 20px;
 }
 
 .taskDiv {
@@ -183,15 +183,21 @@ h2 {
 }
 
 .red{
-	font-color: red;
+	color: red;
+	font-family: courier, monospace;
+	min-width: 600px;
 }
 
 .blue{
-	font-color: blue;
+	color: blue;
+	font-family: courier, monospace;
+	min-width: 600px;
 }
 
 .black{
-	font-color: black;
+	color: black;
+	font-family: courier, monospace;
+	min-width: 600px;
 }
 
 .radioLabels{
@@ -278,4 +284,8 @@ h2 {
 	position: absolute;
 	text-align: center;
 	padding-left: 150px;
+}
+
+.xBtn{
+	margin-left: 20px;
 }

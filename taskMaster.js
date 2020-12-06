@@ -4,7 +4,9 @@ var taskMaster = {
     add: 'ADD',
     clear: 'CLEAR',
     doneTask: 'DONETASK',
-    findCity: 'FINDING'
+    findCity: 'FINDING',
+    penSelec: 'PENSELEC',
+    deleteTask: 'DELETETASK'
   }
 }
 
@@ -31,7 +33,7 @@ var makeModel = function() {
   return {
     addTask: function(task){
       if(task.length > 0) {
-        _taskList.unshift({"task":task, "time": getTime(), "complete": false});
+        _taskList.unshift({"task":task, "time": getTime(), "complete": false, "color": _fontColor});
         _observers.notify();
       }else{
         alert("Please input a task before selecting Add Task button");
@@ -69,7 +71,27 @@ var makeModel = function() {
       return _weatherData;
     },
 
-    getTasks : function() { return _taskList;},
+    penSelec: function(color){
+      _fontColor = color;
+      _observers.notify();
+    },
+
+    deleteTask: function(task){
+      var index = _taskList.indexOf(task);
+      if (index > -1) {
+        _taskList.splice(index, 1);
+      }     
+      _observers.notify();
+    },
+
+    getColor : function(){
+      return _fontColor;
+    },
+
+    getTasks : function() { 
+      return _taskList;
+    },
+
     register: function(fxn) { _observers.add(fxn);}
   };
 }
@@ -109,7 +131,20 @@ var addControlBtn = function(model, txtId, btnId) {
   };
 }
 
+var penSelecBtn = function(btnId){
+  var _btn = document.getElementById(btnId);
+  var _observers = makeSignaller();
 
+  _btn.addEventListener('click', function() {
+    _observers.notify({
+      type: taskMaster.signal.penSelec,
+      value: _btn.value
+    });
+  });
+  return {
+    register: function(fxn) { _observers.add(fxn);}
+  }
+}
 
 var clearControlBtn = function(btnId) {
   var _btn = document.getElementById(btnId);
@@ -159,10 +194,13 @@ var taskView = function(model, listId) {
   var _list = document.getElementById(listId);
   var _observers = makeSignaller();
 
-  var _addTasks = function(task,num) {
+  var _addTasks = function(task,num,color) {
     //console.log(task);
     var newDiv = document.createElement('div');
     var newSpan = document.createElement('span');
+    var color = color;
+    console.log(color);
+
     newSpan.append(document.createTextNode(task.task));
 
     if(task.complete == false){
@@ -171,7 +209,7 @@ var taskView = function(model, listId) {
       newDiv.setAttribute("class","taskDiv crossOut");
     }
     
-    newSpan.setAttribute("class","taskItem");
+    newSpan.setAttribute("class",task.color);
     
     // adds time each task was written
     var time = task.time;
@@ -181,11 +219,24 @@ var taskView = function(model, listId) {
     newSpan.append(timeNode);
 
     newDiv.append(newSpan);
+
+    var xBtn = document.createElement('button');
+    xBtn.setAttribute("class","xBtn");
+    xBtn.innerHTML = "X";
+    newDiv.append(xBtn);
+
     _list.append(newDiv);
 
-    newDiv.addEventListener('click',function() {
+    newSpan.addEventListener('click',function() {
       _observers.notify({
         type: taskMaster.signal.doneTask,
+        value: task
+      });
+    });
+
+    xBtn.addEventListener('click', function() {
+      _observers.notify({
+        type: taskMaster.signal.deleteTask,
         value: task
       });
     });
@@ -198,8 +249,9 @@ var taskView = function(model, listId) {
       }
 
       var tasks = model.getTasks();
+      var color = model.getColor();
       for(var i = 0; i < tasks.length; i++){
-        _addTasks(tasks[i],i);
+        _addTasks(tasks[i],i,color);
       }
     },
 
@@ -226,6 +278,7 @@ var weatherView = function(model, wView) {
               <sup>${sys.country}</sup>
             </h2>
             <div class="city-temp">${Math.round(main.temp * (9/5) + 32)}<sup>°F</sup></div>
+            <div class = "cityWeather">${weather[0]["description"]}</div>
             `;
             var figure = document.createElement('figure');
             var image = document.createElement('img');
@@ -298,6 +351,13 @@ var makeController = function(model) {
           break;
         case taskMaster.signal.findCity:
           model.findCity(event.value);
+          break;
+        case taskMaster.signal.penSelec:
+          model.penSelec(event.value);
+          break;
+        case taskMaster.signal.deleteTask:
+          model.deleteTask(event.value);
+          break;
         default:
           console.log('Unknown Event Type: ', event);
       }
@@ -318,6 +378,9 @@ document.addEventListener("DOMContentLoaded", function(event){
   var addControl = addControlBtn(model,'addTxt','addBtn');
   var clearBtn = clearControlBtn('clearBtn');
   var cityBtn = findCity(model,'searchBtn','cityInput');
+  var blackBtn = penSelecBtn('black');
+  var redBtn = penSelecBtn('red');
+  var blueBtn = penSelecBtn('blue');
   var controller = makeController(model);
 
 
@@ -331,5 +394,8 @@ document.addEventListener("DOMContentLoaded", function(event){
 
   addControl.register(controller.dispatch);
   clearBtn.register(controller.dispatch);
+  blackBtn.register(controller.dispatch);
+  redBtn.register(controller.dispatch);
+  blueBtn.register(controller.dispatch);
   cityBtn.register(controller.dispatch);
 });
