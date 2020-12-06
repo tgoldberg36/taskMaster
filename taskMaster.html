@@ -10,40 +10,45 @@
 
 <body class="w3-black">
   <div class = 'titleBox'>
-  <h1 data-text="90's Task Master">90's Task Master</h1>
+  <h1 data-text="Retro Task Master">Retro Task Master</h1>
   </div>
   <div class = "outerDiv">
-  <div class = "mainDiv">
-    <div class="inputDiv" id = "inputDiv">
-      <input type="text" id="addTxt" />
-      <input type="button" id="addBtn" value="Add Task"/>
-      <input type="button" id="clearBtn" value="Clear All Tasks">
-      
-      <form>
-        <input type="radio" id="black" name="color" value="black">
-        <label for="black">Black</label>
-        <input type="radio" id="red" name="color" value="black">
-        <label for="red">Red</label>
-        <input type="radio" id="blue" name="color" value="blue">
-        <label for="blue" id="blue">Blue</label>
-        <div id="taskList"></div>
-      </form>
-    </div>
-  </div>
-  
-	<div class = "weatherDiv">
-		<span class = "weatherTitle"> Todays Forcast </span>
-		<div class = "weatherTimesDiv">
-			<div class = "Morning">
-			</div>
-			<div class = "Noon">
-			</div>
-			<div class = "Night">
-			</div>
+	  <div class = "mainDiv">
+	  	<div class="inputDiv" id = "inputDiv">
+	      <input type="text" id="addTxt" />
+	      <input type="button" id="addBtn" value="Add Task"/>
+	      <input type="button" id="clearBtn" value="Clear All Tasks" class="iconAllow">
+	      <i class = "icon"></i>
+	      
+	      <div class = "radioDiv">
+	      	<span class = "standardBlack"> Pen Selection </span>
+		      <form>
+		        <input type="radio" id="black" name="color" value="black">
+		        <label for="black" class = "radioLabels">Black</label>
+		        <input type="radio" id="red" name="color" value="black">
+		        <label for="red" class = "radioLabels">Red</label>
+		        <input type="radio" id="blue" name="color" value="blue">
+		        <label for="blue" id="blue" class = "radioLabels">Blue</label>
+		  </div>
+		        <div id="taskList">
+		        </div>
+		    </form>
+	    </div>
+	  </div>
+	  <div class = "weatherDiv" icon = "The Weather Channel">
+		<h2 class = "weatherHeading"> Todays Forcast </h2>
+		<div class = "weatherContainer">
+			<form>
+				<input type = "text" id= "cityInput" placeholder = "Search for a city">
+				<input type = "button" id="searchBtn" value = "SEARCH"></button>
+				<span class = "weatherMsg"> </span>
+			</form>
 		</div>
-	</div>
+		<div class = "weatherAjax">
+			<span class = "cities" id = "cities"></span>
+		</div>
+	  </div>
   </div>
-
 
   <div class ="audioBlock">
     <audio controls>

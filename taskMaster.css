@@ -1,7 +1,7 @@
-body,h2,h3,h4,h5,h6 {	
+body {	
 	background-color: #222; 
   	color: #FFF; 
-  	font-family: 'Saira', sans-serif; 
+  	font-family: tvFont, sans-serif; 
   	font-weight: 700;
 
 	/*font-family: courier, monospace;*/
@@ -34,6 +34,7 @@ body,h2,h3,h4,h5,h6 {
 }
 
 .outerDiv {
+	font-family: tvFont, sans-serif;
 	padding: 50px;
 	padding-top: 10px;
 	display: flex;
@@ -41,6 +42,9 @@ body,h2,h3,h4,h5,h6 {
 }
 
 .mainDiv {
+	border: 10px;
+	border-style: ridge;
+	border-color: lightgrey;
 	width: 600px;
 	animation-name: bgcolor;
     animation-duration: 25s;
@@ -93,9 +97,10 @@ body,h2,h3,h4,h5,h6 {
 }
 
 h1 {
+	  font-family: tvFont, sans-serif;
 	  display: block;
 	  position: relative;
-	  font-size: 100px;
+	  font-size: 90px;
 	  background: -webkit-gradient(linear, left top, left bottom, from(#00f2ff), color-stop(50%, #e2fbff), color-stop(51%, #0a343f), to(#0094f7));
 	  background: linear-gradient(to bottom, #00f2ff 0%, #e2fbff 50%, #0a343f 51%, #0094f7 100%);
 	  background-blend-mode: multiply;
@@ -128,40 +133,43 @@ h1::after {
 	  z-index: -2;
 }
 
-.calanderDiv{
-	background-color: grey;
-	min-width: 600px;
-	display: inline-table;
-}	
-
-.weekdays {
-	font-size: 25px;
-}
-
-.weekdays li{
-	padding: 15px;
-	display: inline-block;
-}
-
-.days{
-	font-size: 20px;
-	padding: 10px;
-	background-color: lightgrey;
-}
-
-.days li{
-	width: 15%;
-	display: inline-block;
-	margin-bottom: 5px;
-}
-
 .weatherDiv {
-	background-color: navy;
-	width: 600px;
+	position: relative;
+	padding: 30px 10px;
+	border: 10px;
+	border-style: ridge;
+	border-color: lightgrey;
+	font-family: tvFont, sans-serif;
+	background-image: url("weatherBack.png");
+	background-size: cover;
+	width: 650px;
 	margin-left: 30px;
 }
 
-.weatherTitle{
+.weatherDiv:before {
+	word-spacing: 25px;
+    width: min-content;
+    display: table-caption;
+	border: 2px;
+	border-radius: 3px;
+	padding: 5px;
+	border-style: solid;
+	border-color: white;
+	background-color: blue;
+  	content: attr(icon);
+}
+
+
+h2 {
+	font-family: tvFont, sans-serif;
+}
+
+.weatherHeading{
+	text-align: center;
+}
+
+.weatherContainer{
+	padding: 10px;
 	text-align: center;
 }
 
@@ -184,4 +192,90 @@ h1::after {
 
 .black{
 	font-color: black;
+}
+
+.radioLabels{
+	color: black;
+}
+
+.radioDiv {
+	border-style: ridge;
+	border-color: lightgrey;
+	border-size: 5px;
+	background-color: white;
+	padding-left: 10px;
+	margin: 5;
+	width: 225px;
+}
+
+.standardBlack {
+	color: black;
+}
+
+.icon{
+	content: '';
+    background:url("trash.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position:absolute;
+    width:22px;
+    height:22px;
+    margin-top: 3px;
+    margin-left: -22px;
+}
+
+.iconAllow {
+	width: 180px;
+}
+
+@font-face {
+  	font-family: tvFont;
+  	src: url("tvfont-webfont.woff");
+  	src: url("tvfont-webfont.woff2");
+}
+
+.weatherAjax {
+  	margin: 50px 0 20px;
+  	padding-left: 33%;
+}
+ 
+.weatherAjax .cities {
+  	display: grid;
+  	grid-gap: 32px 20px;
+  	grid-template-columns: repeat(4, 1fr);
+}
+
+.weatherAjax .city {
+ 	position: relative;
+  	padding: 40px 10%;
+  	border-radius: 20px;
+  	background: var(--text_light);
+  	color: var(--text_med);
+}
+
+.weatherAjax .city::after{
+	content: ’’;
+	width: 90%;
+	height: 50px;
+	position: absolute;
+	bottom: -12px;
+	left: 5%;
+	z-index: -1;
+	opacity: 0.3;
+	border-radius: 20px;
+	background: var(--text_light);
+}
+
+.weatherAjax .city-temp {
+	font-size: 5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+
+.city-name .city-temp{
+	position: absolute;
+	text-align: center;
+	padding-left: 150px;
 }
