@@ -1,16 +1,13 @@
+
 body {	
-	background-color: #222; 
+	cursor: url(helios.png), auto;
   	color: #FFF; 
   	font-family: tvFont, sans-serif; 
   	font-weight: 700;
-
-	/*font-family: courier, monospace;*/
-	animation-name: bgcolor;
-    animation-duration: 25s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  	background-image: url('vapeNation.gif');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
-
 
 @keyframes bgcolor {
 	0% {
@@ -34,6 +31,7 @@ body {
 }
 
 .outerDiv {
+	cursor: url(helios.png), auto;
 	font-family: tvFont, sans-serif;
 	padding: 50px;
 	padding-top: 10px;
@@ -46,16 +44,14 @@ body {
 	border-style: ridge;
 	border-color: lightgrey;
 	width: 600px;
-	animation-name: bgcolor;
-    animation-duration: 25s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-	display: block;
+	background-color: #008080;
+	background-size: cover;
 	min-height: 700px;
 	
 }
 
 .inputDiv {
+	cursor: auto;
 	display: inline-block;
 	align-content: center;
 	padding: 20px;
@@ -173,11 +169,6 @@ h2 {
 	text-align: center;
 }
 
-.audioBlock{
-	display: flex;
-	justify-content: center;
-}
-
 .crossOut {
 	text-decoration: line-through;
 }
@@ -279,7 +270,6 @@ h2 {
 }
 
 
-
 .city-name .city-temp{
 	position: absolute;
 	text-align: center;
@@ -288,4 +278,34 @@ h2 {
 
 .xBtn{
 	margin-left: 20px;
+}
+
+.spin{
+	border-width: 10px;
+	border-style: ridge;
+	border-color: pink;
+	width: 100px;
+	height: 100px;
+	animation-name: spin;
+  	animation-duration: 5000ms;
+  	animation-iteration-count: infinite;
+  	animation-timing-function: linear; 
+	background-image: url('heliosHead.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -1;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.audioBlock{
+	display: flex;
+	justify-content: center;
 }

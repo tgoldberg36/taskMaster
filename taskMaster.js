@@ -267,11 +267,13 @@ var weatherView = function(model, wView) {
 
   var _addCityData = function(wData){
     wData.then(data => {
+      console.log(data);
       document.getElementById('cities').innerHTML = "";
       const { main, name, sys, weather } = data;
       console.log(_cityList);
           const icon = getIcon(weather[0]);
           const li = document.createElement("span");
+
           const markup = `
             <h2 class="city-name" data-name="${name},${sys.country}">
               <span>${name}</span>
